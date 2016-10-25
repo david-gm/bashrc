@@ -22,6 +22,9 @@ Plugin 'tpope/vim-fugitive'
 " plugin vim orgmode
 Plugin 'https://github.com/jceb/vim-orgmode.git'
 
+" for vim dates, needed by vim orgmode
+Plugin 'https://github.com/tpope/vim-speeddating.git'
+
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
