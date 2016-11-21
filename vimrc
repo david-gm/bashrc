@@ -40,6 +40,16 @@ Plugin 'https://github.com/tpope/vim-speeddating.git'
 
 " for json files
 Plugin 'elzr/vim-json'
+
+" nerdtree
+Plugin 'scrooloose/nerdtree'
+
+" provides code overview
+Plugin 'vim-scripts/taglist.vim'
+
+" fuzzy search with ctrl p
+Plugin 'kien/ctrlp.vim'
+
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -72,6 +82,10 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 "}}}
 
+" nerd-tree plugin {{{
+map <C-n> :NERDTreeToggle<CR>
+" }}}
+
 " vim-json plugin {{{
 let g:vim_json_syntax_conceal = 0
 autocmd BufNewFile,BufRead *.gsi setlocal filetype=json
@@ -93,18 +107,30 @@ set hlsearch    " enables highlighted search by default
 " :setlocal spell spelllang=de_at   " setlocal for local file only
 " :setlocal spell spelllang=en_us
 
-let b:myLang=0
+let g:myLang=0
 let g:myLangList=["nospell","de_at","en_us"]
 function! ToggleSpell()
-  let b:myLang=b:myLang+1
-  if b:myLang>=len(g:myLangList) | let b:myLang=0 | endif
-  if b:myLang==0
+  let g:myLang=g:myLang+1
+  if g:myLang>=len(g:myLangList) | let g:myLang=0 | endif
+  if g:myLang==0
     setlocal nospell
   else
-    execute "setlocal spell spelllang=".get(g:myLangList, b:myLang)
+    execute "setlocal spell spelllang=".get(g:myLangList, g:myLang)
   endif
-  echo "spell checking language:" g:myLangList[b:myLang]
+  echo "spell checking language:" g:myLangList[g:myLang]
 endfunction
 
 nmap <silent> <F12> :call ToggleSpell()<CR>
 "}}}
+
+" jump cpp code {{{
+nnoremap <F2> <C-]>
+" }}}
+
+" change windows {{{
+
+"  }}}
+
+" list characters like tabulators {{{
+set listchars=tab:▸\ ,eol:¬
+" }}}
