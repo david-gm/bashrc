@@ -5,8 +5,12 @@ set number
 set expandtab       " tabs are spaces
 set tabstop=4		" number of spaces for tab
 set shiftwidth=4	" change existing tabs if present in file to spaces
-
+set autoread        " refreshes buffer of edited files
 "}}}
+
+" file type syntax highlighting options {{{
+au BufRead,BufNewFile *.dox set filetype=markdown
+" }}}
 
 " vundle settings {{{
 
@@ -45,10 +49,17 @@ Plugin 'elzr/vim-json'
 Plugin 'scrooloose/nerdtree'
 
 " provides code overview
-Plugin 'vim-scripts/taglist.vim'
+Plugin 'vim-scripts/taglist.vim'    " usage: :Tlist
 
 " fuzzy search with ctrl p
 Plugin 'kien/ctrlp.vim'
+
+" vim markdown syntax highlighting
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
+" auto close plugin
+Plugin 'spf13/vim-autoclose'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -128,9 +139,21 @@ nnoremap <F2> <C-]>
 " }}}
 
 " change windows {{{
-
 "  }}}
 
 " list characters like tabulators {{{
 set listchars=tab:▸\ ,eol:¬
+" }}}
+
+" vim-autoclose plugin {{{
+let g:autoclose_vim_commentmode = 1
+" }}}
+
+" remap keys {{{
+nmap <silent> <A-Up> :wincmd k<CR>
+nmap <silent> <A-Down> :wincmd j<CR>
+nmap <silent> <A-Left> :wincmd h<CR>
+nmap <silent> <A-Right> :wincmd l<CR>
+
+nnoremap <leader>ev :tabedit ~/.vim/vimrc<CR>
 " }}}
